@@ -1,0 +1,10 @@
+<h1>SASAKIsan</h1>
+
+<p>ようこそSASAKIsanへ! <%= @user.name %>,</p>
+
+<p>
+下記リンクからSASAKIsanのアカウントを有効化してください:
+</p>
+
+<%= link_to "アカウントのを有効化する", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) %>

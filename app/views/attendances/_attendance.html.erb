@@ -1,0 +1,17 @@
+<tr id="attendance-<%= attendance.id %>">
+  <td class="attendance_time"><%= attendance.clock_in_at.to_s(:datetime_jp) unless attendance.clock_in_at.nil? %></td>
+  <td class="attendance_time"><%= attendance.clock_out_at.to_s(:datetime_jp) unless attendance.clock_out_at.nil? %></td>
+  <td class="timestamp">
+    <%= time_ago_in_words(attendance.created_at) %> ago.
+  </td>
+  <td>
+    <% if current_user?(attendance.user) %>
+      <%= link_to "編集", edit_attendance_path(attendance) %>
+    <% end %>
+  </td>
+  <td>
+    <% if current_user.admin? %>
+      <%= link_to "削除", attendance, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+    <% end %>
+  </td>
+</tr>
