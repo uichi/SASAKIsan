@@ -11,6 +11,8 @@ https://docs.docker.com/desktop/mac/install/
 
 ## database.yml作成
 
+configディレクトリ内に作成してください。
+
 ```
 default: &default
   adapter: mysql2
