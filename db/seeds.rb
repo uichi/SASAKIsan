@@ -32,8 +32,8 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.attendances.create!(clock_in_at: clock_in_at, clock_out_at: clock_out_at) }
 end
 
-User.create!(name:  "uichi",
-            email: "curry_and_coffee@ykonishi.tokyo",
+User.create!(name:  "佐々木小次郎",
+            email: "kojiro_sasaki@ykonishi.tokyo",
             password:              "foobar",
             password_confirmation: "foobar",
             admin:     true,
