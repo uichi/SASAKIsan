@@ -1,0 +1,30 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% if @user.attendances.any? %>
+      <h3>勤怠状況</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">出社時刻</th>
+            <th scope="col">退勤時刻</th>
+            <th scope="col">作成日時</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @attendances %>
+        </tbody>
+      </table>
+      <%= will_paginate @attendances %>
+    <% end %>
+  </div>
+</div>

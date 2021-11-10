@@ -1,0 +1,26 @@
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-3">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="attendance_form">
+        <%= render 'shared/attendance_form' %>
+      </section>
+    </aside>
+    <div class="col-md-9">
+      <h3>勤怠状況</h3>
+        <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <h1>株式会社 SASAKIsan</h1>
+
+    <h2>
+      <a href="https://github.com/uichi">GitHub</a>
+    </h2>
+
+    <%= link_to "サインアップ", signup_path, class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>

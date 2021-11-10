@@ -1,0 +1,18 @@
+<% provide(:title, "勤怠編集") %>
+<h1>勤怠編集</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@attendance) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :clock_in, '出勤時刻' %>
+      <%= f.datetime_field :clock_in_at, class: 'form-control' %>
+
+      <%= f.label :clock_out, '退勤時刻' %>
+      <%= f.datetime_field :clock_out_at, class: 'form-control' %>
+
+      <%= f.submit "更新", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

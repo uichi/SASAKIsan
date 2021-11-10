@@ -1,0 +1,10 @@
+<%= form_for(@attendance) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <% if !@is_clocked_in && !@is_clocked_out %>
+    <%= f.submit "出勤", class: "btn btn-primary" %>
+  <% elsif @is_clocked_in && !@is_clocked_out %>
+    <%= f.submit "退勤", class: "btn btn-primary" %>
+  <% elsif @is_clocked_in && @is_clocked_out %>
+    <%= f.submit "退勤済み", class: "btn btn-primary", disabled: true %>
+  <% end %>
+<% end %>

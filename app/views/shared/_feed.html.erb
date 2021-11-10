@@ -1,0 +1,18 @@
+<% if @feed_items.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">名前</th>
+        <th scope="col">出社時刻</th>
+        <th scope="col">退勤時刻</th>
+        <th scope="col">作成日時</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'shared/home_attendance', collection: @feed_items, as: 'attendance' %>
+    </tbody>
+  </table>
+  <%= will_paginate @feed_items %>
+<% end %>
