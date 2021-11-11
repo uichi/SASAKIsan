@@ -43,6 +43,8 @@ test:
 ## Webpackerをインストール
 `docker-compose run web rails webpacker:install`
 
+`Overwrite /app/config/webpack/environment.js? (enter "h" for help) [Ynaqdhm]`と尋ねられたら`n`を入力してそのままエンターを押してください。
+
 ## コンテナを起動
 `docker-compose up`
 
