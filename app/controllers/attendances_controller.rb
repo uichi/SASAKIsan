@@ -1,6 +1,6 @@
 class AttendancesController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy, :update]
-  before_action :correct_user,   only: [:destroy, :update]
+  before_action :logged_in_user, only: [:create, :destroy, :update, :edit]
+  before_action :correct_user,   only: [:destroy, :update, :edit]
   before_action :clock_out, only: :create
   before_action :admin_user,     only: :destroy
 
