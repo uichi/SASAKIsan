@@ -1,7 +1,6 @@
 class AttendancesController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy, :update, :edit]
   before_action :correct_user,   only: [:destroy, :update, :edit]
-  before_action :clock_out, only: :create
   before_action :admin_user,     only: :destroy
 
   def create
@@ -9,7 +8,7 @@ class AttendancesController < ApplicationController
     is_clocked_in = clock_in?(@attendance)
     is_clocked_out = clock_out?(@attendance)
 
-    if !is_clocked_in && !is_clocked_out
+    if (!is_clocked_in && !is_clocked_out) || (is_clocked_in && is_clocked_out)
       @attendance = current_user.attendances.build(clock_in_at: Time.zone.now)
       flash[:success] = "出勤しました！おはようございます！"
     elsif is_clocked_in && !is_clocked_out
@@ -54,17 +53,5 @@ class AttendancesController < ApplicationController
     def correct_user
       @attendance = current_user.attendances.find_by(id: params[:id])
       redirect_to root_url if @attendance.nil?
-    end
-
-    def clock_out
-      attendance = current_user.today_attendance
-      is_clocked_in = clock_in?(attendance)
-      is_clocked_out = clock_out?(attendance)
-  
-      if is_clocked_in && is_clocked_out
-        flash[:danger] = "退勤済みです。"
-        @feed_items = []
-        redirect_to root_url
-      end
     end
 end
