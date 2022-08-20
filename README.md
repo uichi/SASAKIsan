@@ -60,3 +60,7 @@ localhost:3000にアクセスしてRailsの初期画面が表示されること�
 
 ## コンテナ内のシェルにログイン
 `docker-compose exec web sh`
+
+もしくは
+
+`docker-compose exec web /bin/bash`
